@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @product.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @product.description %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @product.formatted_price %>
+</p>
+
+<p>
+  <strong>Reviews:</strong>
+  <% @product.reviews.each do |review| %>
+    <p><%= review.comment %></p>
+    <div>
+      <%= time_ago_in_words review.created_at %> ago
+    </div>
+  <% end %>
+</p>
+
+<p>
+  <strong>New Review</strong>
+
+  <%= render 'reviews/form' %>
+</p>
+
+<%= link_to 'Edit', edit_product_path(@product) %> |
+<%= link_to 'Back', products_path %>
